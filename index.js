@@ -10,6 +10,8 @@ import {
 const mask = NativeModules.RNTextInputMask.mask
 const unmask = NativeModules.RNTextInputMask.unmask
 const setMask = NativeModules.RNTextInputMask.setMask
+const setText = NativeModules.RNTextInputMask.setText
+
 export { mask, unmask, setMask }
 
 export default class TextInputMask extends Component {
@@ -67,5 +69,14 @@ export default class TextInputMask extends Component {
         }
       }}
     />);
+  }
+
+  clear() {
+    if (Platform.OS === 'ios') {
+      setText(findNodeHandle(this.input), '');
+    } else {
+      this.input.setNativeProps({ text: '' });
+    }
+    this.props.onChangeText('');
   }
 }
