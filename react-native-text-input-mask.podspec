@@ -13,4 +13,5 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/RNTextInputMask/**/*.{swift,h,m}'
   s.requires_arc = true
   s.ios.deployment_target = '9.0'
+  s.dependency 'React'
 end
